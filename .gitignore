@@ -1,0 +1,12 @@
+# Ignore the 7GB of environment and library files
+.venv/
+node_modules/
+__pycache__/
+.DS_Store
+.env
+
+# Ignore the large model weights (Upload these to Google Drive instead)
+l2_model/
+l1_model/
+security_db/
+backend/llmshield_model/

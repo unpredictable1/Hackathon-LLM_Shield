@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+.venv/
+.env
+*.pyc
+
+# Node / Frontend
+node_modules/
+dist/
+.DS_Store
+
+# Large Model Files (Optional: If you want people to download them separately)
+# l2_model/

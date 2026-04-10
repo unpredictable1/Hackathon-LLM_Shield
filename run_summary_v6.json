@@ -1,0 +1,33 @@
+{
+  "version": "V6",
+  "timestamp": "2026-04-09T17:30:07.960358",
+  "l1_model": "bert-base-multilingual-cased",
+  "l2_model": "xlm-roberta-large",
+  "dataset_size": 986,
+  "l1_accuracy": 0.9194,
+  "l1_f1": 0.898,
+  "l1_auc_roc": 0.9824,
+  "l2_accuracy": 0.92,
+  "l2_f1_macro": 0.9163,
+  "unsafe_categories": [
+    "exfiltration",
+    "fraud_facilitation",
+    "hallucination",
+    "hate_speech",
+    "injection",
+    "jailbreak",
+    "misinformation",
+    "privacy_violation",
+    "regulatory_bypass",
+    "sexual_content",
+    "social_engineering",
+    "violence"
+  ],
+  "tier_thresholds": {
+    "SAFE": "<0.10",
+    "LOW": "0.10-0.29",
+    "MEDIUM": "0.30-0.59",
+    "HIGH": "0.60-0.79",
+    "CRITICAL": ">=0.80"
+  }
+}
