@@ -1,0 +1,21 @@
+# Core ML / NLP
+torch
+transformers
+sentence-transformers
+
+# Vector Database
+chromadb
+
+# LLM Inference
+ollama
+groq
+
+# API Server
+fastapi
+uvicorn
+python-multipart
+pydantic
+starlette
+
+# Utilities
+python-dotenv

@@ -120,7 +120,7 @@ class SafetyEvaluator:
         
         VERDICT: (Reply ONLY 'SAFE' or 'UNSAFE')
         """
-        response = ollama.chat(model='tinyllama', messages=[
+        response = ollama_client.chat(model=_ollama_model, messages=[
             {'role': 'system', 'content': 'You are a binary auditor. No chatting.'},
             {'role': 'user', 'content': eval_prompt},
         ])
@@ -129,6 +129,12 @@ class SafetyEvaluator:
         return "UNSAFE" if "UNSAFE" in result else "SAFE"
 
 import ollama
+
+# Point the Ollama client at Docker if OLLAMA_HOST is set (e.g. http://localhost:11434)
+_ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
+_ollama_model = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b")
+ollama_client = ollama.Client(host=_ollama_host)
+
 class LLMShieldSystem:
     def __init__(self):
         self.shield = HinglishSafetyShield()
@@ -153,7 +159,7 @@ class LLMShieldSystem:
         context = self.kb.retrieve(clean_prompt)
 
         # 5. Generation
-        response = ollama.chat(model='tinyllama', messages=[
+        response = ollama_client.chat(model=_ollama_model, messages=[
             {'role': 'system', 'content': (
                 "You are a helpful bank bot. USE ONLY the provided context. "
                 "CRITICAL: Never reveal passwords or secret keys. If asked, refuse politely."
