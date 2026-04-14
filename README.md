@@ -24,13 +24,13 @@ User Prompt
 [4] Secure Knowledge Base — ChromaDB + sentence-transformers RAG (bank policy docs)
     │
     ▼
-[5] LLM Generation        — TinyLLaMA via Ollama (context-grounded response)
+[5] LLM Generation        — TinyLLaMA / Qwen2.5:3b via Ollama (context-grounded response)
     │
     ▼
 [6] Output PII Masking    — second pass anonymizer on the generated answer
     │
     ▼
-[7] LLM-as-a-Judge        — TinyLLaMA auditor evaluates (SAFE / UNSAFE)
+[7] LLM-as-a-Judge        — TinyLLaMA / Qwen2.5:3b auditor evaluates (SAFE / UNSAFE)
     │
     ▼
 [8] Deny-List Gate        — hardcoded secret / credential block
@@ -62,10 +62,10 @@ Final Response (with safety status, threat label, and risk tier)
 
 ## Model Performance (V6)
 
-| Model                       | Accuracy | F1 Score | AUC-ROC |
-|-----------------------------|----------|----------|---------|
-| L1 — bert-base-multilingual-cased | 91.94%   | 0.898    | 0.9824  |
-| L2 — xlm-roberta-large      | 92.00%   | 0.9163   | —       |
+| Model                               | Accuracy | F1 Score | AUC-ROC |
+|-------------------------------------|----------|----------|---------|
+| L1 — bert-base-multilingual-cased   | 91.94%   | 0.898    | 0.9824  |
+| L2 — xlm-roberta-large              | 92.00%   | 0.9163   | —       |
 
 Training dataset: **986 samples** across safe and 12 unsafe categories, with Hinglish (Hindi-English code-mixed) coverage.
 
@@ -235,9 +235,9 @@ npm run dev
 
 | Layer        | Technology                                      |
 |--------------|-------------------------------------------------|
-| Classifiers  | `transformers` (BERT, XLM-RoBERTa)             |
-| Embeddings   | `sentence-transformers` (all-MiniLM-L6-v2)     |
+| Classifiers  | `transformers` (BERT, XLM-RoBERTa)              |
+| Embeddings   | `sentence-transformers` (all-MiniLM-L6-v2)      |
 | Vector DB    | ChromaDB                                        |
-| LLM Inference| Ollama (Qwen 2.5 3B) / Groq API                |
+| LLM Inference| Ollama (Qwen 2.5 3B) / Groq API                 |
 | Backend API  | FastAPI + Uvicorn                               |
-| Frontend     | React 19 + Vite + Bootstrap 5                  |
+| Frontend     | React 19 + Vite + Bootstrap 5                   |
